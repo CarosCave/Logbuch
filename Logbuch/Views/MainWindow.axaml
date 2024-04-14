@@ -1,0 +1,86 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:Logbuch.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="450"
+        x:Class="Logbuch.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="Logbuch"
+        Width="400"
+        Height="450">
+
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+    
+    
+    <DockPanel>
+        <!-- Menü -->
+        <Menu DockPanel.Dock="Top" Background="LightGray">
+            <MenuItem Header="Datei">
+            <MenuItem Header="Öffnen"/>
+            </MenuItem>                
+        </Menu>
+        
+        <!-- Statuszeile -->
+        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" Background="LightGray">
+            <Label FontWeight="Bold">Status:</Label>
+            <Label>Datenbank Geladen</Label>
+        </StackPanel>
+        
+        
+        <!-- Hauptfenster -->
+        <Grid RowDefinitions="Auto, Auto, Auto, Auto">
+            <!-- Eingabe -->
+            <Label Grid.Row="0" FontWeight="Bold">Eingabe</Label>
+                
+                <Grid Grid.Row="1" 
+                      RowDefinitions="Auto, Auto, Auto, Auto" 
+                      ColumnDefinitions="Auto, Auto" 
+                      ShowGridLines="True">
+                    <!-- Rufzeichen -->
+                    <Label Grid.Row="0" Grid.Column="0" VerticalContentAlignment="Center">Rufzeichen</Label>
+                    <TextBox Grid.Row="0" Grid.Column="1" Width="150" Text="{Binding Rufzeichen}"/>
+                    <!-- Name -->
+                    <Label Grid.Row="1" Grid.Column="0" VerticalContentAlignment="Center">Name</Label>
+                    <TextBox Grid.Row="1" Grid.Column="1" Width="150" Text="{Binding Name}"/>
+                    <!-- Band -->
+                    <Label Grid.Row="2" Grid.Column="0">Band</Label>
+                    <ComboBox Grid.Row="2" Grid.Column="1" Width="150" SelectedValue="{Binding Band}">
+                        <ComboBoxItem>80 m</ComboBoxItem>
+                        <ComboBoxItem>40 m</ComboBoxItem>
+                        <ComboBoxItem>20 m</ComboBoxItem>
+                        <ComboBoxItem>2 m</ComboBoxItem>
+                        <ComboBoxItem>70 cm</ComboBoxItem>
+                    </ComboBox>
+                    
+                    <!-- Button -->
+                    <Button Grid.Row="3" 
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2"
+                            HorizontalAlignment="Center"
+                            Content="Speichern"
+                            Command="{Binding TriggerNewEntry}"/>
+                    
+                </Grid>
+            
+            
+            
+            <!-- Ausgabe des Logbuchs -->
+            <Label Grid.Row="2" FontWeight="Bold">Ausgabe</Label>
+            <StackPanel Grid.Row="3">
+                
+            </StackPanel>
+        
+        </Grid>
+    </DockPanel>
+        
+        
+    
+        
+        
+</Window>
