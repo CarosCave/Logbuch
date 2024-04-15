@@ -59,7 +59,7 @@
                     </ComboBox> -->
                     
                     <ComboBox Grid.Row="2" Grid.Column="1" Width="150" 
-                              Items="{Binding Bands}" 
+                              ItemsSource="{Binding Bands}" 
                               SelectedItem="{Binding Band}">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
