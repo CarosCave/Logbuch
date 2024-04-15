@@ -50,12 +50,30 @@
                     <TextBox Grid.Row="1" Grid.Column="1" Width="150" Text="{Binding Name}"/>
                     <!-- Band -->
                     <Label Grid.Row="2" Grid.Column="0">Band</Label>
-                    <ComboBox Grid.Row="2" Grid.Column="1" Width="150" SelectedValue="{Binding Band}">
-                        <ComboBoxItem>80 m</ComboBoxItem>
+                    <!--<ComboBox Grid.Row="2" Grid.Column="1" Width="150" SelectedItem="{Binding Band}">
+                        <ComboBoxItem>80 m"</ComboBoxItem>
                         <ComboBoxItem>40 m</ComboBoxItem>
                         <ComboBoxItem>20 m</ComboBoxItem>
                         <ComboBoxItem>2 m</ComboBoxItem>
                         <ComboBoxItem>70 cm</ComboBoxItem>
+                    </ComboBox> -->
+                    
+                    <ComboBox Grid.Row="2" Grid.Column="1" Width="150" 
+                              Items="{Binding Bands}" 
+                              SelectedItem="{Binding Band}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding}"/>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                        <!-- <ComboBox.Items>
+                            <x:String>80 m</x:String>
+                           <x:String>80 m</x:String>
+                            <x:String>40 m</x:String>
+                            <x:String>20 m</x:String>
+                            <x:String>2 m</x:String>
+                            <x:String>70 cm</x:String>
+                        </ComboBox.Items>-->
                     </ComboBox>
                     
                     <!-- Button -->
@@ -73,7 +91,7 @@
             <!-- Ausgabe des Logbuchs -->
             <Label Grid.Row="2" FontWeight="Bold">Ausgabe</Label>
             <StackPanel Grid.Row="3">
-                
+                <Button Command="{Binding TriggerConsoleEntry}">Zeige Einträge auf Konsole</Button>
             </StackPanel>
         
         </Grid>
