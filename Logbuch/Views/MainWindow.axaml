@@ -89,7 +89,10 @@
             
             
             <!-- Ausgabe des Logbuchs -->
-            <Label Grid.Row="2" FontWeight="Bold">Ausgabe</Label>
+            <StackPanel Grid.Row="2">
+                <Label FontWeight="Bold">Ausgabe</Label>
+                <Label Content="{Binding AnzahlBeiträge}"></Label>
+            </StackPanel>
             <StackPanel Grid.Row="3">
                 <Button Command="{Binding TriggerConsoleEntry}">Zeige Einträge auf Konsole</Button>
             </StackPanel>
